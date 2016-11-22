@@ -1,6 +1,6 @@
 ---
 title: "The Complexity of Food Webs"
-author: "Giulio Valentino Dalla Riva"
+author: "All of contributors"
 date: "16 November 2016"
 output: 
   html_document: 
@@ -88,17 +88,11 @@ Maybe some plot, just because everybody loves hairy balls.
 
 #### Methodology
 
-To illustrate the analytic flow without compromising our results with an implicit bias, we are going to use an unnamed complexity function sampled from the `r length(list(wiener,balabanJ,
-                     harary,randic,graphVertexComplexity,
-                     balabanlike2,balabanlike1,vertexDegree,
-                     radialCentric,bonchev2,bonchev1,
-                     bertz,complexityIndexB,normalizedEdgeComplexity,
-                     zagreb2,zagreb1,totalAdjacency,
-                     hyperDistancePathIndex,productOfRowSums,compactness,
-                     meanDistanceDeviation,topologicalInfoContent_entropy,infoTheoreticGCM_entropy))` provided by `QuACN`.
+To illustrate the analytic flow without compromising our results with an implicit bias, we are going to use an unnamed complexity function sampled from the
+`r length(compl_list)` provided by `QuACN`.
                      
 ```{r}
-cpl_foo <- random_complexity_foo()
+cpl_foo <- random_complexity_foo(compl_list)
 ```
 
 We can compute the complexity of any of the observed food webs:

@@ -1,5 +1,5 @@
 # The Complexity of Food Webs
-Giulio Valentino Dalla Riva  
+All of contributors  
 16 November 2016  
 
 
@@ -80,11 +80,12 @@ Maybe some plot, just because everybody loves hairy balls.
 
 #### Methodology
 
-To illustrate the analytic flow without compromising our results with an implicit bias, we are going to use an unnamed complexity function sampled from the 23 provided by `QuACN`.
+To illustrate the analytic flow without compromising our results with an implicit bias, we are going to use an unnamed complexity function sampled from the
+23 provided by `QuACN`.
                      
 
 ```r
-cpl_foo <- random_complexity_foo()
+cpl_foo <- random_complexity_foo(compl_list)
 ```
 
 We can compute the complexity of any of the observed food webs:
@@ -97,7 +98,7 @@ test_fw <- test_fw[[name_fw]]
 test_fw_cpl <- cpl_foo(test_fw)
 ```
 
-We find that the Mondego food web has a complexity of 4.4308519. Now, we can test wether that complexity is significantly higher (or lower) than wha we find in a _random_ food web. To do this, we have to define a randomization function, that performs a rewiring of the observed food web preserving some of its properties. The choice of the properties to preserve is an essential component of the analytic flow.
+We find that the gramwet food web has a complexity of 0.1853602. Now, we can test wether that complexity is significantly higher (or lower) than wha we find in a _random_ food web. To do this, we have to define a randomization function, that performs a rewiring of the observed food web preserving some of its properties. The choice of the properties to preserve is an essential component of the analytic flow.
 
 
 

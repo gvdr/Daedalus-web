@@ -9,7 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Giulio Valentino Dalla Riva" />
+<meta name="author" content="All of contributors" />
 
 <meta name="date" content="2016-11-16" />
 
@@ -215,7 +215,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">The Complexity of Food Webs</h1>
-<h4 class="author"><em>Giulio Valentino Dalla Riva</em></h4>
+<h4 class="author"><em>All of contributors</em></h4>
 <h4 class="date"><em>16 November 2016</em></h4>
 
 </div>
@@ -278,13 +278,13 @@ web_list &lt;- plyr::llply(foodwebs, directed_to_graphNEL)</code></pre>
 <div id="methodology" class="section level4">
 <h4>Methodology</h4>
 <p>To illustrate the analytic flow without compromising our results with an implicit bias, we are going to use an unnamed complexity function sampled from the 23 provided by <code>QuACN</code>.</p>
-<pre class="r"><code>cpl_foo &lt;- random_complexity_foo()</code></pre>
+<pre class="r"><code>cpl_foo &lt;- random_complexity_foo(compl_list)</code></pre>
 <p>We can compute the complexity of any of the observed food webs:</p>
 <pre class="r"><code>test_fw &lt;- sample(web_list,size=1)
 name_fw &lt;- names(test_fw)
 test_fw &lt;- test_fw[[name_fw]]
 test_fw_cpl &lt;- cpl_foo(test_fw)</code></pre>
-<p>We find that the Mondego food web has a complexity of 4.4308519. Now, we can test wether that complexity is significantly higher (or lower) than wha we find in a <em>random</em> food web. To do this, we have to define a randomization function, that performs a rewiring of the observed food web preserving some of its properties. The choice of the properties to preserve is an essential component of the analytic flow.</p>
+<p>We find that the gramwet food web has a complexity of 0.1853602. Now, we can test wether that complexity is significantly higher (or lower) than wha we find in a <em>random</em> food web. To do this, we have to define a randomization function, that performs a rewiring of the observed food web preserving some of its properties. The choice of the properties to preserve is an essential component of the analytic flow.</p>
 </div>
 <div id="results" class="section level4">
 <h4>Results</h4>

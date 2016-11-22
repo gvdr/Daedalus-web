@@ -51,23 +51,22 @@ infoTheoreticGCM_entropy <- function(x) {
   infoTheoreticGCM(x)$entropy 
 }
 
+compl_list <- list(wiener,balabanJ,
+                   harary,randic,graphVertexComplexity,
+                   balabanlike2,balabanlike1,vertexDegree,
+                   radialCentric,bonchev2,bonchev1,
+                   bertz,complexityIndexB,normalizedEdgeComplexity,
+                   zagreb2,zagreb1,totalAdjacency,
+                   hyperDistancePathIndex,productOfRowSums,compactness,
+                   meanDistanceDeviation,topologicalInfoContent_entropy,infoTheoreticGCM_entropy)
+
 #' returns at random a complexity function from the ones
 #' provided by QuACN
 #' all the functions return a scalar and accept a graphNEL as input
-random_complexity_foo <- function() {
+random_complexity_foo <- function(compl_foo_list) {
   library("QuACN")
-
-  compl_list <- list(wiener,balabanJ,
-                     harary,randic,graphVertexComplexity,
-                     balabanlike2,balabanlike1,vertexDegree,
-                     radialCentric,bonchev2,bonchev1,
-                     bertz,complexityIndexB,normalizedEdgeComplexity,
-                     zagreb2,zagreb1,totalAdjacency,
-                     hyperDistancePathIndex,productOfRowSums,compactness,
-                     meanDistanceDeviation,topologicalInfoContent_entropy,infoTheoreticGCM_entropy)
   
-  
-  compl_foo <- compl_list[[sample(length(compl_list),size=1)]]
+  compl_foo <- compl_list[[sample(length(compl_foo_list),size=1)]]
   
   return(compl_foo)
 }
