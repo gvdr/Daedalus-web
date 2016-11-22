@@ -223,7 +223,7 @@ div.tocify {
 
 <div id="are-food-web-complex" class="section level1">
 <h1>Are Food Web complex?</h1>
-<p>Cool kids throw around the word <em>complexity</em> a lot. The notion underlying the hype is that ecosystem, described in terms of ecological networks, are the outcome of evolutionary and ecologic processes — not <em>random</em> structures. Thus, cool kids <em>expect</em> them to be significantly more <em>complex</em> of what expected under some <em>null model</em>. As a corollary, cool kids <em>expect</em> ecological network complexity to be higher were the complexity of the evolutionary and ecologic processes is higher.</p>
+<p>Food webs are <em>complex</em>. The notion underlying the hype is that ecosystem, described in terms of ecological networks, are the outcome of evolutionary and ecologic processes — not <em>random</em> structures. Thus, we <em>expect</em> them to be significantly more <em>complex</em> of what expected under some <em>null model</em>. As a corollary, we <em>expect</em> ecological network complexity to be higher were the complexity of the evolutionary and ecologic processes is higher.</p>
 <p>Here, we try to cut through the hype, briefly reviewing the various heuristical definition of ecosystem / food webs complexity. Moreover, we introduce rigorous definitions of graph complexity in the ecological scenario, presenting both deterministic (Kolmogorov) and probabilistic definitions. We discuss how the heuristic definition may be related to the more rigorous definitions.</p>
 <p>To ground the discussion we put to test the main notion, asking (i) wether food webs are indeed more complex than random graphs. Finally, we explore the corollary, asking (ii) wether the complexity of food webs is correlated with any of the other large spectrum biodiversity trends: are tropical food webs more complex than high latitude ones? are microbial food webs more complex than non microbial ones?</p>
 </div>
@@ -232,19 +232,73 @@ div.tocify {
 <p>The graph description of food webs are abstractions: they do not exist, as such, in nature. <em>Building</em> a graph representation of an ecosystem’s trophic interactions involves a number of choices: ecosystems need to be defined within closed spatial, temporal and scale boundaries (e.g., we may be interested in the human gut microbial community at a certain time, or in the pollination network of flowering plants in the Po valley spring); individuals need to be grouped (species, guild, OTUs, …); interactions need to be grouped (predation, commensalism, pollination, …) and selected (we may focus on one or more of those interactions); interacting individuals need to be assigned to <em>groups</em> and their interaction classified; relevant empirical and literature data need to be gathered, processed and validated.</p>
 <p>Each of this steps adds both uncertainty and arbitrarity to che process. The choices made in one system can be hardly compared to the choices made in a different system. The operative issues encountered depend on many system specific factors — and researchers in a field may fail to recognize the specific issues exhisting in other fields.</p>
 <p>However problematic this <em>complications</em> are, they do not <em>necessarily</em> translate into an intrinsic <em>complexity</em> of the food webs themselves. In other words, <em>complicated</em> webs need not to be more <em>complex</em>. Moreover, given that many choices are grounded on a specific knowledge of the systems being studied, they don’t seem a sound terrain on which to base a food web complexity. That is, what is <em>complicated</em> may depend on who’s defining <em>complicated</em>.</p>
+<blockquote>
+<p>The challenges of managing and analyzing data generated from genetic/genomic techniques is often what microbial ecologists are really referring to when they invoke complexity. Brute-force use of typologies and careless references to the number of microbes (gizillions everywhere!) lead to hairballs of seemingly intractable complexity</p>
+</blockquote>
+<blockquote>
+<p>[Thus we see that,] microbial ecologists (and others) use “complexity” as a proxy for how hard it is to measure/quantify a network. This deserves some thought, too. If a network can never be quantified, that doesn’t necessarily mean it’s complex - but it obscures our ability to make predictions for that community. And isn’t that in a way similar to how indirect effects can lead to “ecological surprises”?</p>
+</blockquote>
 <p>The alternative is to consider the complexity of a food web as a network.</p>
 </div>
 <div id="what-is-complex-1" class="section level1">
 <h1>What <em>is</em> complex?</h1>
+<blockquote>
+<p>The question of “what is complexity” is really interesting because we don’t have a good grasp on what any of our complexity metrics mean.</p>
+</blockquote>
 <p>In López-Ruiz et al., the authors propose to define the complexity of a physical phenomena as “the interplay between the information stored in the system and its disequilibrium”. Here, we consider the two components autonomously, discussing the <strong>informational</strong> and the <strong>dynamical</strong> components of a food web complexity.</p>
+<div id="ecological-complexity" class="section level2">
+<h2>Ecological complexity</h2>
+<p>(Here I’m quoting straight — or almost — from Allison.)</p>
+<p>Ecologists historically used the number of interactions (scaled in some way or another) as a proxy for a food web complexity.</p>
+<div id="topology-and-interaction-weights" class="section level3">
+<h3>Topology and interaction weights</h3>
+<p>I think another unexplored aspect includes the weight of those interactions (i.e., interaction strength) and how interaction strength drives feedback loops (e.g., see <a href="http://onlinelibrary.wiley.com/doi/10.1890/0012-9658(2002)083%5B1372:ROCSIA%5D2.0.CO;2/full">Dambacher et al.</a> and the more recent but more technical <a href="http://biorxiv.org/content/early/2016/10/25/083089">Koslicki &amp; Novak</a>. Most folks aren’t talking about interaction strength though because we don’t have that kind of data.</p>
+</div>
+</div>
 <div id="topological-complexity" class="section level2">
 <h2>Topological complexity</h2>
 <p>(XXX Maybe something about Watson and Szathamary and learing in ecosystems). The information complexity of an observed food web can be summarised as the amount of information needed to specify its structure, that is, the distance between the observed food web and the most likely random food web (XXX this is to check carefully).</p>
+<div id="are-food-webs-complex" class="section level3">
+<h3>Are food webs complex?</h3>
+<p>The claim that food webs are complex can be expressed as the hypothesis that the informational and dynamical complexity of observed food webs is higher than that of simulated food webs sampled from a relevant null distribution.</p>
+<p>So far, the literature about food web complexity operated only through statistical indexes (such as connectance or species richness), assumed as proxies for complexities. igraphdata Here, we test wether food webs are significantly complex, across a variety of informational complexities measures and randomization techniques.</p>
+<div id="data" class="section level4">
+<h4>Data</h4>
+<p>Let’s start with a toy example: food webs from the <code>igraph</code> package.</p>
+<pre class="r"><code>suppressMessages(source(&quot;./R/Reqs.R&quot;))</code></pre>
+<p>We use the food webs contained in the <code>foodwebs</code> dataset provided by <code>Igraphdata</code>.</p>
+<blockquote>
+<p>See references for the individual webs above. The data itself was downloaded from <a href="http://vlado.fmf.uni-lj.si/pub/networks/data/bio/foodweb/foodweb.htm">Vlado’s website</a>.</p>
+</blockquote>
+<p>To compute the information theoretic indexes we need to transform the <em>Igraph</em> web objects to <em>graphNEL</em> objects. We do it using the ancillary function <code>directed_to_graphNEL()</code>.</p>
+<pre class="r"><code>data(foodwebs)
+web_list &lt;- plyr::llply(foodwebs, directed_to_graphNEL)</code></pre>
+<p>Maybe some plot, just because everybody loves hairy balls.</p>
+</div>
+<div id="methodology" class="section level4">
+<h4>Methodology</h4>
+<p>To illustrate the analytic flow without compromising our results with an implicit bias, we are going to use an unnamed complexity function sampled from the 23 provided by <code>QuACN</code>.</p>
+<pre class="r"><code>cpl_foo &lt;- random_complexity_foo()</code></pre>
+<p>We can compute the complexity of any of the observed food webs:</p>
+<pre class="r"><code>test_fw &lt;- sample(web_list,size=1)
+name_fw &lt;- names(test_fw)
+test_fw &lt;- test_fw[[name_fw]]
+test_fw_cpl &lt;- cpl_foo(test_fw)</code></pre>
+<p>We find that the Mondego food web has a complexity of 4.4308519. Now, we can test wether that complexity is significantly higher (or lower) than wha we find in a <em>random</em> food web. To do this, we have to define a randomization function, that performs a rewiring of the observed food web preserving some of its properties. The choice of the properties to preserve is an essential component of the analytic flow.</p>
+</div>
+<div id="results" class="section level4">
+<h4>Results</h4>
+<p>Are empiracally observed food webs significantly more complex, from an information theoretic point of view, than their random counter part? Is any of the common proxies (such as connectance, the number of species, …) correlated with the information complexity of the webs?</p>
+</div>
+</div>
 </div>
 <div id="dynamical-complexity" class="section level2">
 <h2>Dynamical complexity</h2>
 <p>Food webs are not, in general, static. Demographic dynamics are a source of additional complexity. We identify the dynamical complexity of a food web with the complexity of its dynamic attractor. (We need help from Leo here!)</p>
 </div>
+</div>
+<div id="conclusions" class="section level1">
+<h1>Conclusions</h1>
 </div>
 
 
