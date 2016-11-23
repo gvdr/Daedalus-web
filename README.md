@@ -98,9 +98,37 @@ test_fw <- test_fw[[name_fw]]
 test_fw_cpl <- cpl_foo(test_fw)
 ```
 
-We find that the gramwet food web has a complexity of 0.1853602. Now, we can test wether that complexity is significantly higher (or lower) than wha we find in a _random_ food web. To do this, we have to define a randomization function, that performs a rewiring of the observed food web preserving some of its properties. The choice of the properties to preserve is an essential component of the analytic flow.
+We find that the CrystalC food web has a complexity of 3.6216535. Now, we can test wether that complexity is significantly higher (or lower) than wha we find in a _random_ food web. To do this, we have to define a randomization function, that performs a rewiring of the observed food web preserving some of its properties. The choice of the properties to preserve is an essential component of the analytic flow.
 
 
+```r
+random_fw <- g_NE_r(test_fw) # random ER graph with the observed number of nodes and (undirected) edges
+random_fw_cpl <- cpl_foo(random_fw)
+```
+
+And we can test whether the complexity index of the observed web is lower of the randomized one. In this is case it's higher.
+
+We can build that into a significance test for the complexity of the observed network.
+
+
+```r
+Replications <- 1000
+random_fw_cpl_array <- replicate(Replications,cpl_foo(g_NE_r(test_fw)))
+empirical_p <- sum(random_fw_cpl_array >= test_fw_cpl) / Replications
+```
+
+In this case, the 0% of the randomized webs have a higher complexity (as measured by `cpl_foo`) than the observed one. Thus, we say that the observed web is significantly complex, with respect to the randomization algorithm and the complexity measure we adopted. We can also have a look at the distribution of the complexity measure we computed over the randomized webs we simulated.
+
+
+```r
+ggplot(data.frame(complexity = random_fw_cpl_array),
+       aes(complexity)) +
+  geom_density() +
+  geom_vline(xintercept = test_fw_cpl, colour = "red") +
+  theme_minimal()
+```
+
+![](README_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 #### Results
 

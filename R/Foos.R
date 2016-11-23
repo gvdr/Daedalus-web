@@ -76,5 +76,8 @@ random_complexity_foo <- function(compl_foo_list) {
 #' Number of Edges
 #' after having simplified and undirected it.
 g_NE_r <- function(org_graph) {
-  org_graph
+  Nv <- numNodes(org_graph)
+  Ne <- numEdges(org_graph)
+  r_graph <- randomEGraph(V = as.character(seq(1,Nv)), edges = Ne)
+  return(r_graph)
 }
