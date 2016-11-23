@@ -43,22 +43,22 @@ The alternative is to consider the complexity of a food web as a network.
 
 In López-Ruiz et al., the authors propose to define the complexity of a physical phenomena as "the interplay between the information stored in the system and its disequilibrium". Here, we consider the two components autonomously, discussing the **informational** and the **dynamical** components of a food web complexity.
 
-## Ecological complexity
+## The ecology
 
 (Here I'm quoting straight --- or almost --- from Allison.)
 
 Ecologists historically used the number of interactions (scaled in some way or another) as a proxy for a food web complexity.
 
-### Topology and interaction weights
+### Interactions: not everyone is equal
 
 I think another unexplored aspect includes the weight of those interactions (i.e., interaction strength) and how interaction strength drives feedback loops (e.g., see [Dambacher et al.](http://onlinelibrary.wiley.com/doi/10.1890/0012-9658(2002)083[1372:ROCSIA]2.0.CO;2/full) and the more recent but more technical [Koslicki & Novak](http://biorxiv.org/content/early/2016/10/25/083089). Most folks aren't talking about interaction strength though because we don't have that kind of data.
 
-## Topological complexity
+## The topology
 
 (XXX Maybe something about Watson and Szathamary and learing in ecosystems). The information complexity of an observed food web can be summarised as the amount of information needed to specify its structure, that is, the distance between the observed food web and the most likely random food web (XXX this is to check carefully).
 
 
-### Are food webs complex?
+### Are food webs topologically complex?
 
 The claim that food webs are complex can be expressed as the hypothesis that the informational and dynamical complexity of observed food webs is higher than that of simulated food webs sampled from a relevant null distribution.
 
@@ -89,8 +89,7 @@ Maybe some plot, just because everybody loves hairy balls.
 
 #### Methodology
 
-To illustrate the analytic flow without compromising our results with an implicit bias, we are going to use an unnamed complexity function sampled from the
-`r length(compl_list)` provided by `QuACN`.
+To illustrate the analytic flow without compromising our results with an implicit bias, we are going to use an unnamed complexity function sampled from the `r length(compl_list)` provided by `QuACN`.
                      
 ```{r}
 cpl_foo <- random_complexity_foo(compl_list)
@@ -122,6 +121,10 @@ random_fw_cpl_array <- replicate(Replications,cpl_foo(g_NE_r(test_fw)))
 empirical_p <- sum(random_fw_cpl_array >= test_fw_cpl) / Replications
 ```
 
+#### Results
+
+Are empiracally observed food webs significantly more complex, from an information theoretic point of view, than their random counter part?
+
 In this case, the `r empirical_p*100`% of the randomized webs have a higher complexity (as measured by `cpl_foo`) than the observed one. Thus, we say that the observed web `r ifelse(empirical_p < 0.05, "is", "is not")` significantly complex, with respect to the randomization algorithm and the complexity measure we adopted. We can also have a look at the distribution of the complexity measure we computed over the randomized webs we simulated.
 
 ```{r}
@@ -132,11 +135,9 @@ ggplot(data.frame(complexity = random_fw_cpl_array),
   theme_minimal()
 ```
 
-#### Results
+Is any of the common proxies (such as connectance, the number of species, ...) correlated with the information complexity of the webs?
 
-Are empiracally observed food webs significantly more complex, from an information theoretic point of view, than their random counter part? Is any of the common proxies (such as connectance, the number of species, ...) correlated with the information complexity of the webs?
-
-## Dynamical complexity
+## The dynamics
 
 Food webs are not, in general, static. Demographic dynamics are a source of additional complexity. We identify the dynamical complexity of a food web with the complexity of its dynamic attractor. (We need help from Leo here!)
 
