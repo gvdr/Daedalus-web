@@ -1,4 +1,4 @@
-# The Complexity of Food Webs
+# Food Webs: it's not easy with this complexity.
 All of contributors  
 16 November 2016  
 
@@ -6,7 +6,7 @@ All of contributors
 
 # Are Food Web complex?
 
-Food webs are _complex_. The notion underlying the hype is that ecosystem, described in terms of ecological networks, are the outcome of evolutionary and ecologic processes --- not _random_ structures. Thus, we _expect_ them to be significantly more _complex_ of what expected under some _null model_. As a corollary, we _expect_ ecological network complexity to be higher were the complexity of the evolutionary and ecologic processes is higher.
+Ecologists have been wondering about the complexity of food webs and having reached a consensus: 208 articles claims that "food webs are complex", and an additional 5230 mention "complex food webs"; in comparison, 43 articles mention them as being "simple" and 5230 find "simple food webs" --- and this is usually _relative_ to more complex food webs [@jonsdottir2005terrestrial]. The notion underlying the hype is that ecosystem, described in terms of ecological networks, are the outcome of evolutionary and ecologic processes --- not _random_ structures. Thus, we _expect_ them to be significantly more _complex_ of what expected under some _null model_. As a corollary, we _expect_ ecological network complexity to be higher were the complexity of the evolutionary and ecologic processes is higher.
 
 Here, we try to cut through the hype, briefly reviewing the various heuristical definition of ecosystem / food webs complexity. Moreover, we introduce rigorous definitions of graph complexity in the ecological scenario, presenting both deterministic (Kolmogorov) and probabilistic definitions. We discuss how the heuristic definition may be related to the more rigorous definitions.
 
@@ -111,7 +111,7 @@ We can build that into a significance test for the complexity of the observed ne
 
 
 ```r
-Replications <- 1000
+Replications <- 10
 random_fw_cpl_array <- replicate(Replications,cpl_foo(g_NE_r(test_fw)))
 empirical_p <- sum(random_fw_cpl_array >= test_fw_cpl) / Replications
 ```
