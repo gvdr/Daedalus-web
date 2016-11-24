@@ -4,9 +4,9 @@ All of contributors
 
 
 
-# Are Food Web complex?
+# Are Food Webs complex?
 
-Ecologists have been wondering about the complexity of food webs and having reached a consensus: 208 articles claims that "food webs are complex", and an additional 5230 mention "complex food webs"; in comparison, 43 articles mention them as being "simple" and 5230 find "simple food webs" --- and this is usually _relative_ to more complex food webs [@jonsdottir2005terrestrial]. The notion underlying the hype is that ecosystem, described in terms of ecological networks, are the outcome of evolutionary and ecologic processes --- not _random_ structures. Thus, we _expect_ them to be significantly more _complex_ of what expected under some _null model_. As a corollary, we _expect_ ecological network complexity to be higher were the complexity of the evolutionary and ecologic processes is higher.
+Ecologists have been wondering about the complexity of food webs and seem to have reached a consensus: 208 articles claims that "food webs are complex", and an additional 5230 mention "complex food webs"; in comparison, 43 articles mention them as being "simple" and 5230 find "simple food webs" --- and this is usually _relative_ to more complex food webs [@jonsdottir2005terrestrial]. The notion underlying the hype is that ecosystem, described in terms of ecological networks, are the outcome of evolutionary and ecologic processes --- not _random_ structures. Thus, we _expect_ them to be significantly more _complex_ of what expected under some _null model_. As a corollary, we _expect_ ecological network complexity to be higher were the complexity of the evolutionary and ecologic processes is higher.
 
 Here, we try to cut through the hype, briefly reviewing the various heuristical definition of ecosystem / food webs complexity. Moreover, we introduce rigorous definitions of graph complexity in the ecological scenario, presenting both deterministic (Kolmogorov) and probabilistic definitions. We discuss how the heuristic definition may be related to the more rigorous definitions.
 
