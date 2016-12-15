@@ -20,17 +20,35 @@ To ground the discussion we put to test the main notion --- namely, that ecologi
 
 # Perceiving complexity
 
-The graph description of food webs are abstractions: they do not exist, as such, in nature. *Building* a graph representation of an ecosystem's trophic interactions involves a number of choices: ecosystems need to be defined within closed spatial, temporal and scale boundaries (e.g., we may be interested in the human gut microbial community at a certain time, or in the pollination network of flowering plants in the Po valley spring); individuals need to be grouped (species, guild, OTUs, ...); interactions need to be grouped (predation, commensalism, pollination, ...) and selected (we may focus on one or more of those interactions); interacting individuals need to be assigned to _groups_ and their interaction classified; relevant empirical and literature data need to be gathered, processed and validated.
+## Operational complexity
 
-Each of this steps adds both uncertainty and arbitrarity to che process. The choices made in one system can be hardly compared to the choices made in a different system. The operative issues encountered depend on many system specific factors --- and researchers in a field may fail to recognize the specific issues exhisting in other fields.
+The complexity of an object depends on our description of it. On the one hand, the neuronal blue print of our brain is extremely intricated; on the other hand, it is just a large but not exceptional amount of protons, neutrons and electrons --- not dissimilarly by a concrete block of roughly the same size ---; and if we had described it just by its size and volume we wouldn't be able to distinguish it from a watermelon.
 
-However problematic this *complications* are, they do not *necessarily* translate into an intrinsic *complexity* of the food webs themselves. In other words, *complicated* webs need not to be more *complex*. Moreover, given that many choices are grounded on a specific knowledge of the systems being studied, they don't seem a sound terrain on which to base a food web complexity. That is, what is *complicated* may depend on who's defining *complicated*.
+In exactly the same way, the level of detail with which we describe an ecosystem --- our choice of which elements to include or ignore in the description --- will determine how much complex the ecosystem will look to us. Here we will consider ecosystem as described by ecological interaction networks, i.e., trophic networks or food webs.
 
-> The challenges of managing and analyzing  data generated from genetic/genomic techniques is often what microbial ecologists are really referring to when they invoke complexity.  Brute-force use of  typologies and careless references to the number of microbes (gizillions everywhere!) lead to hairballs of seemingly intractable complexity
+The graph representations of food webs are abstractions: they do not exist, as such, in nature; *building* graph representations involves a number of choices. We need to enclose ecosystems within spatial and temporal boundaries (e.g., we may be interested in one morning snapshot of one person's gut microbial community, or in the pollination network of flowering plants in the Po valley during spring); we need to group individual --- or not (the nodes in our graph can represent individuals, species, guilds, OTUs, ...); we need to categorise interactions (predation, commensalism, pollination, ...) and select them (we may observe on one or more of those categories); if we decided to group individuals and/or interactions, we would need to assign them to groups and/or interactions to categories; even before that, we need to observe --- and maybe sample --- individuals and detect interactions (directly or through the study of the relevant literature).
 
-> [Thus we see that,] microbial ecologists (and others) use "complexity" as a proxy for how hard it is to measure/quantify a network. This deserves some thought, too. If a network can never be quantified, that doesn't necessarily mean it's complex - but it obscures our ability to make predictions for that community. And isn't that in a way similar to how indirect effects can lead to "ecological surprises"?
+All this tasks add both uncertainty and arbitrarity to the building process. Choices made in one system can be hardly compared to the choices made in a different system. The operational issues encountered depend on system specific factors --- and researchers in a field may fail to recognize the specific issues exhisting in other fields.
 
-The alternative is to consider the complexity of a food web as a network.
+This *complications* constitute the first facet of complexity encountered by ecologists when dealing with food webs. In other words, **food webs are complex because they are hard to put together**. We name this **operational complexity** The challenges of managing and analyzing  data generated from genetic/genomic techniques is often at the forefront of what microbial ecologists refer to when they invoke complexity.
+
+However problematic this complications are, they do not *necessarily* translate into the other facets of *complexity* we will discuss in the following paragraph. Food webs that are very hard to study may exhibit (or not) a remarkable simple structure once finally unveiled. Moreover, given that many choices are grounded on a specific knowledge of the systems being studied, they don't seem a sound terrain on which to compare food web complexities across systems: operational complexity is extremely _operator dependent_.
+
+Yet, let's not dismiss operational complexity too hastly. In fact some of its sources and consequences link into two other facets of complexity we will analyse in the next two sessions.
+
+A trophic network can be operational complex because it is constituted by a very large number of elements, interactors and interactions. We refer to this as **numerosity**. A network that can never be quantified obscures our ability to make and test predictions about its future, in other words, it can be largely **unpredictable**.
+
+## Numerosity
+
+A tempting request we can express to any definition of complexity is that, everything else being equal, the complexity of an object should grow if we add more element to the object. That is, our measure of complexity should be a monotonic increasing function of the number of elements of the objects.
+
+This is in line with May's definion of complexity as the **connectance** of a food web --- its link density. It is, indeed, natural to think that food webs involving more species should be more complex; and given a fixed number of species, food webs with more interactions should be more complex.
+
+Notice that connectance (and the similar measure of link density) is blind to the structure of the trophic network. It takes into account _how many_ interactions are there, but not who interacts with who.
+
+## Unpredictability
+
+## Process complexity
 
 # Measuring complexity
 
