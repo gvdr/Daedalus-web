@@ -3,16 +3,22 @@ All of contributors
 16 November 2016  
 
 
+> If no one ask of me, I know; if I wish to explain to him who asks, I know not.
+> Saint Augustin, _Confessions_, Book 11
 
 # Are Food Webs complex?
 
-Ecologists have been wondering about the complexity of food webs and seem to have reached a consensus: 208 articles claims that "food webs are complex", and an additional 5230 mention "complex food webs"; in comparison, 43 articles mention them as being "simple" and 5230 find "simple food webs" --- and this is usually _relative_ to more complex food webs [@jonsdottir2005terrestrial]. The notion underlying the hype is that ecosystem, described in terms of ecological networks, are the outcome of evolutionary and ecologic processes --- not _random_ structures. Thus, we _expect_ them to be significantly more _complex_ of what expected under some _null model_. As a corollary, we _expect_ ecological network complexity to be higher were the complexity of the evolutionary and ecologic processes is higher.
+Ecologists have been wondering about the complexity of food webs and seem to agree: 208 articles claims that "food webs are complex", and an additional 5260 mention "complex food webs" (in comparison, 43 articles mention them as being "simple" and 5260 find "simple food webs" --- and this is usually _relative_ to more complex food webs [@jonsdottir2005terrestrial]). The notion underlying the common claim stems from recognising that ecosystems, described in terms of ecological networks, are the outcome of evolutionary and ecologic processes --- not merely _random_ structures. Thus, we nurture an _expectation_ for them to be significantly more _complex_ of what expected under some _null model_. As a corollary, we may _expect_ ecological networks' complexity to be higher in system that are the outcome of more complicated, long, or strong, evolutionary and ecologic processes.
 
-Here, we try to cut through the hype, briefly reviewing the various heuristical definition of ecosystem / food webs complexity. Moreover, we introduce rigorous definitions of graph complexity in the ecological scenario, presenting both deterministic (Kolmogorov) and probabilistic definitions. We discuss how the heuristic definition may be related to the more rigorous definitions.
+However, the popularity of the term has not, so far, been supported by a rigorous analysis of its meaning. In fact, it is hard to find any discussion of what it _means_ to be complex in the papers mentioning complexity. Whenever a certain metric has been adopted adopted, the choice is rarely argumentated: how does that particular metric measures complexity? Is said metric a direct measurement or a proxy for complexity? And, if it is a proxy, under which condition is it a _good_ proxy?
 
-To ground the discussion we put to test the main notion, asking (i) wether food webs are indeed more complex than random graphs. Finally, we explore the corollary, asking (ii) wether the complexity of food webs is correlated with any of the other large spectrum biodiversity trends: are tropical food webs more complex than high latitude ones? are microbial food webs more complex than non microbial ones?
+Because of this vague and implicit definition, _complexity_ has been used as an umbrella to refer to many different, sometime conflicting, concepts. So, we find system that are said _complex_ because **numerous** (they are made of many parts: many species, many interactions, ... ), because they have a **disordered** structure (they do not exhibit regular topologies), because they exhibit **chaotic** behaviours (it is hard to predict their dynamics). None of these terms is strictly equivalent to another; nor their equivalence has been explicitly shown for ecological systems.  None of them in isolation is sufficient to distinguish a complex system from a simple system. However, numerousity, disorder, chaos, (and other characteristics), all concur to determine a complex system. Similarly, most popular ways of quantifying complexity, and thus to compare the complexity of an observed ecosystem to another or to a null model, are actually measures of either numerousity, disorder, chaos. Thus, we risk to offer biased comparison and not to be able to discern significant and non significant complexities.
 
-# *What* is complex?
+With this in mind, we review and systematise some of the various heuristical conceptualizations of ecosystem complexity, focussing in particular on ecosystem represented as trophic interaction networks (e.g., predator--prey or consumer--resource food webs). Moreover, we introduce rigorous definitions of graph complexity in the ecological scenario, presenting both deterministic (Kolmogorov) and probabilistic definitions. We discuss how the heuristic definition may be related to the more rigorous definitions.
+
+To ground the discussion we put to test the main notion --- namely, that ecological networks are significantly complex. To do that, we adopt from the graph theory literature a restricted set of rigorous graph complexities metrics, which we believe are ecologically meaningful and relevant. Then, we identify proper null model distributions of ecological networks. Finally, we compare the complexity of a large ensemble of observed ecological networks with the complexity of their randomized counterparts.
+
+# Perceiving complexity
 
 The graph description of food webs are abstractions: they do not exist, as such, in nature. *Building* a graph representation of an ecosystem's trophic interactions involves a number of choices: ecosystems need to be defined within closed spatial, temporal and scale boundaries (e.g., we may be interested in the human gut microbial community at a certain time, or in the pollination network of flowering plants in the Po valley spring); individuals need to be grouped (species, guild, OTUs, ...); interactions need to be grouped (predation, commensalism, pollination, ...) and selected (we may focus on one or more of those interactions); interacting individuals need to be assigned to _groups_ and their interaction classified; relevant empirical and literature data need to be gathered, processed and validated.
 
@@ -26,7 +32,7 @@ However problematic this *complications* are, they do not *necessarily* translat
 
 The alternative is to consider the complexity of a food web as a network.
 
-# What *is* complex?
+# Measuring complexity
 
 > The question of "what is complexity" is really interesting because we don't have a good grasp on what any of our complexity metrics mean.
 
@@ -81,7 +87,7 @@ Maybe some plot, just because everybody loves hairy balls.
 #### Methodology
 
 To illustrate the analytic flow without compromising our results with an implicit bias, we are going to use an unnamed complexity function sampled from the 23 provided by `QuACN`.
-                     
+
 
 ```r
 cpl_foo <- random_complexity_foo(compl_list)
