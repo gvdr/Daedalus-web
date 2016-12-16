@@ -61,27 +61,25 @@ Notice that connectance (and the similar measure of link density) is blind to th
 
 ## Unpredictability
 
+In López-Ruiz et al., the authors propose to define the complexity of a physical phenomena as "the interplay between the information stored in the system and its disequilibrium". Here, we consider the two components autonomously, discussing the **informational** component of a food web complexity in the **Structure complexity** session, and the **dynamical** component here.
+
+Food webs are not, in general, static. Demographic dynamics are a source of additional complexity. We identify the dynamical complexity of a food web with the complexity of its dynamic attractor.
+
+<!-- We need help from Leo here! -->
+
 ## Process complexity
 
-# Measuring complexity
+# Structure complexity
 
-> The question of "what is complexity" is really interesting because we don't have a good grasp on what any of our complexity metrics mean.
+All the previous facets of complexity are extremely important for the ecologists, and can be readily interpreted: we can relate to the operational struggle, we can count species, we consider predictability important for many good reasons, we appreciate the complexity of the ecological and evolutionary processes. Yet, operational and process complexity, and unpredictability are difficult to quantify exactly, while it is not clear if counting OTUs in a microbial community is the same activity of counting species in the Serengeti. The previous complexities make comparing different food web complexities hard.
 
-In López-Ruiz et al., the authors propose to define the complexity of a physical phenomena as "the interplay between the information stored in the system and its disequilibrium". Here, we consider the two components autonomously, discussing the **informational** and the **dynamical** components of a food web complexity.
-
-## The ecology
-
-(Here I'm quoting straight --- or almost --- from Allison.)
-
-Ecologists historically used the number of interactions (scaled in some way or another) as a proxy for a food web complexity.
-
-### Interactions: not everyone is equal
-
-I think another unexplored aspect includes the weight of those interactions (i.e., interaction strength) and how interaction strength drives feedback loops (e.g., see [Dambacher et al.](http://onlinelibrary.wiley.com/doi/10.1890/0012-9658(2002)083[1372:ROCSIA]2.0.CO;2/full) and the more recent but more technical [Koslicki & Novak](http://biorxiv.org/content/early/2016/10/25/083089). Most folks aren't talking about interaction strength though because we don't have that kind of data.
+On contrary, complexity metrics based on the shape of the interaction networks themselves are adopted because they seem to be directly comparable between system. Yet, adopting metrics straight graph, electrical network, or social network theories meanse that their interpretation is arguably straightforward. We know how to measure it, but what does it mean? When is the structure of a network _complex_?
 
 ## The topology
 
-(XXX Maybe something about Watson and Szathamary and learing in ecosystems). The information complexity of an observed food web can be summarised as the amount of information needed to specify its structure, that is, the distance between the observed food web and the most likely random food web (XXX this is to check carefully).
+The information complexity of an observed food web can be summarised as the amount of information needed to specify its structure, that is, the distance between the observed food web and the most likely random food web
+
+<!--- XXX this is to check carefully --->
 
 
 ### Are food webs topologically complex?
@@ -163,8 +161,16 @@ ggplot(data.frame(complexity = random_fw_cpl_array),
 
 Is any of the common proxies (such as connectance, the number of species, ...) correlated with the information complexity of the webs?
 
-## The dynamics
+# Discussion and Conclusions
 
-Food webs are not, in general, static. Demographic dynamics are a source of additional complexity. We identify the dynamical complexity of a food web with the complexity of its dynamic attractor. (We need help from Leo here!)
+## Limitations
 
-# Conclusions
+### Not all interactions are equal
+
+The different relevance of single interactions in the web --- the interaction _weights_ ---  are important for the demographic dynamics and the stability of the webs (e.g., see [Dambacher et al.](http://onlinelibrary.wiley.com/doi/10.1890/0012-9658(2002)083[1372:ROCSIA]2.0.CO;2/full) and the more recent but more technical [Koslicki & Novak](http://biorxiv.org/content/early/2016/10/25/083089)). The measures of structural complexities we tested numerically are blind to edge weights. This possible source of food web complexity is still largely ignored, in part due to the difficulty of gathering the necessary data to establish interaction weights.
+
+## Relevance: why do we care...
+
+### ...about information content?
+
+<!--- Maybe something about Watson and Szathamary and learing in ecosystems --->

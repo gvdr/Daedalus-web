@@ -254,29 +254,22 @@ div.tocify {
 </div>
 <div id="unpredictability" class="section level2">
 <h2>Unpredictability</h2>
+<p>In López-Ruiz et al., the authors propose to define the complexity of a physical phenomena as “the interplay between the information stored in the system and its disequilibrium”. Here, we consider the two components autonomously, discussing the <strong>informational</strong> component of a food web complexity in the <strong>Structure complexity</strong> session, and the <strong>dynamical</strong> component here.</p>
+<p>Food webs are not, in general, static. Demographic dynamics are a source of additional complexity. We identify the dynamical complexity of a food web with the complexity of its dynamic attractor.</p>
+<!-- We need help from Leo here! -->
 </div>
 <div id="process-complexity" class="section level2">
 <h2>Process complexity</h2>
 </div>
 </div>
-<div id="measuring-complexity" class="section level1">
-<h1>Measuring complexity</h1>
-<blockquote>
-<p>The question of “what is complexity” is really interesting because we don’t have a good grasp on what any of our complexity metrics mean.</p>
-</blockquote>
-<p>In López-Ruiz et al., the authors propose to define the complexity of a physical phenomena as “the interplay between the information stored in the system and its disequilibrium”. Here, we consider the two components autonomously, discussing the <strong>informational</strong> and the <strong>dynamical</strong> components of a food web complexity.</p>
-<div id="the-ecology" class="section level2">
-<h2>The ecology</h2>
-<p>(Here I’m quoting straight — or almost — from Allison.)</p>
-<p>Ecologists historically used the number of interactions (scaled in some way or another) as a proxy for a food web complexity.</p>
-<div id="interactions-not-everyone-is-equal" class="section level3">
-<h3>Interactions: not everyone is equal</h3>
-<p>I think another unexplored aspect includes the weight of those interactions (i.e., interaction strength) and how interaction strength drives feedback loops (e.g., see <a href="http://onlinelibrary.wiley.com/doi/10.1890/0012-9658(2002)083%5B1372:ROCSIA%5D2.0.CO;2/full">Dambacher et al.</a> and the more recent but more technical <a href="http://biorxiv.org/content/early/2016/10/25/083089">Koslicki &amp; Novak</a>. Most folks aren’t talking about interaction strength though because we don’t have that kind of data.</p>
-</div>
-</div>
+<div id="structure-complexity" class="section level1">
+<h1>Structure complexity</h1>
+<p>All the previous facets of complexity are extremely important for the ecologists, and can be readily interpreted: we can relate to the operational struggle, we can count species, we consider predictability important for many good reasons, we appreciate the complexity of the ecological and evolutionary processes. Yet, operational and process complexity, and unpredictability are difficult to quantify exactly, while it is not clear if counting OTUs in a microbial community is the same activity of counting species in the Serengeti. The previous complexities make comparing different food web complexities hard.</p>
+<p>On contrary, complexity metrics based on the shape of the interaction networks themselves are adopted because they seem to be directly comparable between system. Yet, adopting metrics straight graph, electrical network, or social network theories meanse that their interpretation is arguably straightforward. We know how to measure it, but what does it mean? When is the structure of a network <em>complex</em>?</p>
 <div id="the-topology" class="section level2">
 <h2>The topology</h2>
-<p>(XXX Maybe something about Watson and Szathamary and learing in ecosystems). The information complexity of an observed food web can be summarised as the amount of information needed to specify its structure, that is, the distance between the observed food web and the most likely random food web (XXX this is to check carefully).</p>
+<p>The information complexity of an observed food web can be summarised as the amount of information needed to specify its structure, that is, the distance between the observed food web and the most likely random food web</p>
+<!--- XXX this is to check carefully --->
 <div id="are-food-webs-topologically-complex" class="section level3">
 <h3>Are food webs topologically complex?</h3>
 <p>The claim that food webs are complex can be expressed as the hypothesis that the informational and dynamical complexity of observed food webs is higher than that of simulated food webs sampled from a relevant null distribution.</p>
@@ -326,16 +319,26 @@ empirical_p &lt;- sum(random_fw_cpl_array &gt;= test_fw_cpl) / Replications</cod
 </div>
 </div>
 </div>
-<div id="the-dynamics" class="section level2">
-<h2>The dynamics</h2>
-<p>Food webs are not, in general, static. Demographic dynamics are a source of additional complexity. We identify the dynamical complexity of a food web with the complexity of its dynamic attractor. (We need help from Leo here!)</p>
+</div>
+<div id="discussion-and-conclusions" class="section level1">
+<h1>Discussion and Conclusions</h1>
+<div id="limitations" class="section level2">
+<h2>Limitations</h2>
+<div id="not-all-interactions-are-equal" class="section level3">
+<h3>Not all interactions are equal</h3>
+<p>The different relevance of single interactions in the web — the interaction <em>weights</em> — are important for the demographic dynamics and the stability of the webs (e.g., see <a href="http://onlinelibrary.wiley.com/doi/10.1890/0012-9658(2002)083%5B1372:ROCSIA%5D2.0.CO;2/full">Dambacher et al.</a> and the more recent but more technical <a href="http://biorxiv.org/content/early/2016/10/25/083089">Koslicki &amp; Novak</a>). The measures of structural complexities we tested numerically are blind to edge weights. This possible source of food web complexity is still largely ignored, in part due to the difficulty of gathering the necessary data to establish interaction weights.</p>
 </div>
 </div>
-<div id="conclusions" class="section level1 unnumbered">
-<h1>Conclusions</h1>
+<div id="relevance-why-do-we-care" class="section level2">
+<h2>Relevance: why do we care…</h2>
+<div id="about-information-content" class="section level3">
+<h3>…about information content?</h3>
+<!--- Maybe something about Watson and Szathamary and learing in ecosystems --->
 <div id="refs" class="references">
 <div id="ref-jonsdottir2005terrestrial">
 <p>Jónsdóttir, Ingibjörg S. 2005. “Terrestrial Ecosystems on Svalbard: Heterogeneity, Complexity and Fragility from an Arctic Island Perspective.” In <em>Biology and Environment: Proceedings of the Royal Irish Academy</em>, 105B:155–65. 3. Royal Irish Academy.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
