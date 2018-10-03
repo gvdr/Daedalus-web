@@ -24,7 +24,9 @@ directed_to_graphNEL <- function(Igraph){
   library(igraph)
   graphnel <- as.undirected(Igraph) # make the Igraph undirected
   igraph::E(graphnel)$weight <- 1 # all the weights are 1
-  igraph::as_graphnel(graphnel) # transforms to graphNEL
+  graphnel <- igraph::as_graphnel(graphnel) # transforms to graphNEL
+  #tibble(name = graph_attr(Igraph,"name"),
+  #           web = list(graphnel))
 }
 
 #' converts an Igraph undirected graphs, such as the one in the foodwebs
@@ -40,14 +42,14 @@ undirected_to_graphNEL <- function(Igraph){
 #' computes the topologicalInfoContent and return the entropy value
 #' we use it to sample at random a complexity function
 topologicalInfoContent_entropy <- function(x) {
-  library("QuACN")
+  library(QuACN)
   topologicalInfoContent(x)$entropy
 }
 
 #' computes the infoTheoreticGCM and return the entropy valu
 #' we use it to sample at random a complexity function
 infoTheoreticGCM_entropy <- function(x) {
-  library("QuACN")
+  library(QuACN)
   infoTheoreticGCM(x)$entropy 
 }
 
@@ -64,20 +66,33 @@ compl_list <- list(wiener,balabanJ,
 #' provided by QuACN
 #' all the functions return a scalar and accept a graphNEL as input
 random_complexity_foo <- function(compl_foo_list) {
-  library("QuACN")
+  library(QuACN)
   
   compl_foo <- compl_list[[sample(length(compl_foo_list),size=1)]]
   
   return(compl_foo)
 }
 
+#' randomize an observed graph preserving
+#' Number of Nodes
+#' Number of Edges
+#' after having simplified and undirected it.
+#' and produces K results
+g_NE_krNEL <- function(org_graph,K=100) {
+  empty_NEL <- graphNEL()
+  g_NE_rNEL <- possibly(g_NE_rNEL_unsafe,empty_NEL)
+  r_graphs <- replicate(K,g_NE_rNEL(org_graph))
+  return(r_graphs)
+}
+
 #' randomize and observed graph preserving
 #' Number of Nodes
 #' Number of Edges
 #' after having simplified and undirected it.
-g_NE_r <- function(org_graph) {
+g_NE_rNEL_unsafe <- function(org_graph) {
   Nv <- numNodes(org_graph)
   Ne <- numEdges(org_graph)
-  r_graph <- randomEGraph(V = as.character(seq(1,Nv)), edges = Ne)
+  r_graph <- play_erdos_renyi(n = Nv, m = Ne, directed = FALSE) %>%
+    undirected_to_graphNEL()
   return(r_graph)
 }

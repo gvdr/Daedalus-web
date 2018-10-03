@@ -8,12 +8,13 @@ number_articles <- function(phrase_key,year = FALSE){
   library('dplyr')
   library('rvest')
   library('stringr')
+  library('glue')
   
  if(year) {
   phrase_key %>%
     str_replace_all(" ","+") %>%
     str_c("%22",.,"%22") %>%
-    paste0("https://scholar.google.ca/scholar?q=",.,"&as_ylo=",year,"&as_yhi=",year) %>%
+    glue("https://scholar.google.ca/scholar?q=",.,"&as_ylo=",year,"&as_yhi=",year) %>%
     read_html() %>%
     html_nodes("#gs_ab_md") %>%
     html_text() %>%

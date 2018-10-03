@@ -21,15 +21,15 @@ set.seed(4242)
 
 # Are Food Webs complex?
 
-Ecologists have been wondering about the complexity of food webs and seem to agree: `r source("./R/Litfoos.R"); number_articles("food webs are complex")` articles claims that "food webs are complex", and an additional `r number_articles("complex food webs")` mention "complex food webs" (in comparison, `r source("./R/Litfoos.R"); number_articles("food webs are simple")` articles mention them as being "simple" and `r number_articles("simple food webs")` find "simple food webs" --- and this is usually _relative_ to more complex food webs [@jonsdottir2005terrestrial]). The notion underlying the common claim stems from recognising that ecosystems, described in terms of ecological networks, are the outcome of evolutionary and ecologic processes --- not merely _random_ structures. Thus, we nurture an _expectation_ for them to be significantly more _complex_ of what expected under some _null model_. As a corollary, we may _expect_ ecological networks' complexity to be higher in system that are the outcome of more complicated, long, or strong, evolutionary and ecologic processes.
+Ecologists have been wondering about the complexity of food webs and seem to agree: `r source("./R/Litfoos.R"); number_articles("food webs are complex")` articles available in Google Scholar claims that "food webs are complex", and an additional `r number_articles("complex food webs")` mention "complex food webs" (in comparison, only `r number_articles("food webs are simple")` articles mention them as being "simple" and `r number_articles("simple food webs")` find "simple food webs" --- and commonly _relative_ to more complex food webs [@jonsdottir2005terrestrial]). The notion underlying the common claim stems from recognising that ecosystems, described in terms of ecological networks, are the outcome of evolutionary and ecologic processes --- not merely _random_ structures. Thus, we nurture an _expectation_ for them to be significantly more _complex_ of what expected under some _null model_. As a corollary, we may _expect_ ecological networks' complexity to be higher in system that are the outcome of more complicated, long, or intense, evolutionary and ecologic processes.
 
-However, the popularity of the term has not, so far, been supported by a rigorous analysis of its meaning. In fact, it is hard to find any discussion of what it _means_ to be complex in the papers mentioning complexity. Whenever a certain metric has been adopted adopted, the choice is rarely argumentated: how does that particular metric measures complexity? Is said metric a direct measurement or a proxy for complexity? And, if it is a proxy, under which condition is it a _good_ proxy?
+However, the popularity of the term "complexity" has not been supported by a rigorous analysis of its meaning in food web ecology. In fact, it is hard to find any discussion of what it _means_ to be complex in the papers mentioning complexity. Whenever a certain metric is used to indicate complexity, the choice is rarely explained: how does that particular metric measures complexity? Is the metric a direct measurement or an indirect proxy for complexity? And, if it is a proxy, is it always _good_ proxy or only within some conditions?
 
-Because of this vague and implicit definition, _complexity_ has been used as an umbrella to refer to many different, sometime conflicting, concepts. So, we find system that are said _complex_ because **numerous** (they are made of many parts: many species, many interactions, ... ), because they have a **disordered** structure (they do not exhibit regular topologies), because they exhibit **chaotic** behaviours (it is hard to predict their dynamics). None of these terms is strictly equivalent to another; nor their equivalence has been explicitly shown for ecological systems.  None of them in isolation is sufficient to distinguish a complex system from a simple system. However, numerousity, disorder, chaos, (and other characteristics), all concur to determine a complex system. Similarly, most popular ways of quantifying complexity, and thus to compare the complexity of an observed ecosystem to another or to a null model, are actually measures of either numerousity, disorder, chaos. Thus, we risk to offer biased comparison and not to be able to discern significant and non significant complexities.
+Because of this vague and implicit definition, _complexity_ has been used as an umbrella to refer to many different, sometime conflicting, concepts. So, we find system that are said _complex_ because **numerous** (they are made of many parts: many species, many interactions, ... ), because they have a **disordered** structure (they do not exhibit apparent regularities or repeated patterns), because they exhibit **chaotic** behaviours (it is hard or impossible to predict their status in a far enough future). In fact, many ways of quantifying complexity, and of comparing the complexity of observed ecosystems, are measures of either numerousity, disorder, or chaotic behaviour. Yet, numerousity, disoder, and chaotic behaviour are not in general equivalent to the other; nor their equivalence has been explicitly shown for ecological systems. More, none of the three concept taken in isolation is sufficient to distinguish a complex system from a simple system. However, numerousity, disorder, chaotic behaviour and other characteristics, all concur to determine a complex system. Without a better understanding of what copmlexity is and of how we can measure it, we risk to offer biased comparisons and to mistake significant and non significant complexities.
 
-With this in mind, we review and systematise some of the various heuristical conceptualizations of ecosystem complexity, focussing in particular on ecosystem represented as trophic interaction networks (e.g., predator--prey or consumer--resource food webs). Moreover, we introduce rigorous definitions of graph complexity in the ecological scenario, presenting both deterministic (Kolmogorov) and probabilistic definitions. We discuss how the heuristic definition may be related to the more rigorous definitions.
+With this in mind, we review and systematise some of the various heuristical conceptualizations of ecosystem complexity, focussing in particular on ecosystem represented as trophic interaction networks (e.g., predator--prey or consumer--resource food webs). Moreover, we introduce definitions of graph complexity in the ecological scenario, presenting both deterministic (Kolmogorov) and probabilistic definitions. We discuss how the heuristic definition may be related to the more rigorous definitions.
 
-To ground the discussion we put to test the main notion --- namely, that ecological networks are significantly complex. To do that, we adopt from the graph theory literature a restricted set of rigorous graph complexities metrics, which we believe are ecologically meaningful and relevant. Then, we identify proper null model distributions of ecological networks. Finally, we compare the complexity of a large ensemble of observed ecological networks with the complexity of their randomized counterparts.
+To ground the discussion we test whether ecological networks are significantly more complex than random. To do that, we adopt from the graph theory literature a restricted set of graph complexities metrics, which we believe are ecologically meaningful and relevant. Then, we identify proper null model distributions of ecological networks. Finally, we compare the complexity of a large ensemble of observed ecological networks with the complexity of their randomized counterparts.
 
 # Perceiving complexity
 
@@ -84,10 +84,10 @@ The information complexity of an observed food web can be summarised as the amou
 
 ### Are food webs topologically complex?
 
-The claim that food webs are complex can be expressed as the hypothesis that the informational and dynamical complexity of observed food webs is higher than that of simulated food webs sampled from a relevant null distribution.
+The claim that food webs are complex can be expressed as the hypothesis that the informational and dynamical complexity of observed food webs is higher than that of simulated food webs sampled from a relevant null distribution. Therefore, the answer will depend on (1) the structure of the observed food web, (2) the exact definition of complexity adopted, and (3) the null distribution against which the food web complexity is evaluated --- which we define specifying a web randomization algorithm.
 
 So far, the literature about food web complexity operated only through statistical indexes (such as connectance or species richness), assumed as proxies for complexities.
-igraphdata
+
 Here, we test wether food webs are significantly complex, across a variety of informational complexities measures and randomization techniques.
 
 #### Data
@@ -106,58 +106,87 @@ To compute the information theoretic indexes we need to transform the _Igraph_ w
 
 ```{r}
 data(foodwebs)
-web_list <- plyr::llply(foodwebs, directed_to_graphNEL)
+webs_df <- data_frame(name = map_chr(foodwebs, graph_attr, "name") %>% as_factor(),
+                      web = map(foodwebs, directed_to_graphNEL) %>% map(unlist)) %>%
+  filter(name != "Rhode River Watershed - Water Budget") %>%
+  as.data.frame()
 ```
 
-Maybe some plot, just because everybody loves hairy balls.
 
 #### Methodology
 
-To illustrate the analytic flow without compromising our results with an implicit bias, we are going to use an unnamed complexity function sampled from the `r length(compl_list)` provided by `QuACN`.
+##### Null model comparison
+
+To illustrate the analysis flow without compromising our results with an implicit bias, we work blindfolded using an unnamed complexity metric sampled from the `r length(compl_list)` metrics provided by the R library `QuACN`.
 
 ```{r}
+set.seed(999)
 cpl_foo <- random_complexity_foo(compl_list)
+cpl_foo_safe <- possibly(cpl_foo, NA_real_) # the possibly wrapper avoids our flow to break if cpl_foo returns an error for some web
 ```
 
-We can compute the complexity of any of the observed food webs:
+Using this unknown function, we compute the complexity of the observed food webs.
 
 ```{r}
-test_fw <- sample(web_list,size=1)
-name_fw <- names(test_fw)
-test_fw <- test_fw[[name_fw]]
-test_fw_cpl <- cpl_foo(test_fw)
+webs_df %<>%
+  mutate(complexity = web %>% map_dbl(cpl_foo_safe))
 ```
 
-We find that the `r name_fw` food web has a complexity of `r test_fw_cpl`. Now, we can test wether that complexity is significantly higher (or lower) than wha we find in a _random_ food web. To do this, we have to define a randomization function, that performs a rewiring of the observed food web preserving some of its properties. The choice of the properties to preserve is an essential component of the analytic flow.
+
+To test wether the observed food web complexities are significantly higher (or lower), we compare the observed complexity with the complexity of _synthetic_ food webs obtained by randomising the observed webs. Thus, the null model is defined in terms of a randomization algorithm rewiring the observed food webs while preserving some of the web properties.
+
+In this example, we choose to preserve the overall number of species and interactions (i.e., nodes and edges) in each web. Then, we compute the unknown complexity metric for each of the randomised web.
+
+
+We use the the random complexity values we computed to perform a permanova significance test for the complexity of the observed webs. In general, it will be important to consider whether higher metric values are associated to more or less complexity, but we can not answer this question with an unknown complexity metric.
 
 ```{r}
-random_fw <- g_NE_r(test_fw) # random ER graph with the observed number of nodes and (undirected) edges
-random_fw_cpl <- cpl_foo(random_fw)
+N_randoms = 1000
+webs_df %<>%
+  mutate(randoms = web %>% map(g_NE_krNEL,K=N_randoms), # we randomise mainteining Nodes and Edges
+         random_complexities = randoms %>% map(~ .x %>% map_dbl(cpl_foo_safe)), # we compute the cpl_foo for each randomization of each food web
+         obs_ge_random = map2_dbl(complexity,random_complexities, ~ sum(.x >= unlist(.y)) / N_randoms)) # we compute the frequency of observed complexity greater or equal than randomised ones
 ```
 
-And we can test whether the complexity index of the observed web is lower of the randomized one. In this is case it's `r ifelse(random_fw_cpl > test_fw_cpl, "lower", "higher")`.
 
-We can build that into a significance test for the complexity of the observed network.
+Finally, we can consider the frequency of randomisazation having greater complexity values than the observed webs (Table 1) or visually look a the random and observed complexity (Figure 1).
 
-```{r}
-Replications <- 10
-random_fw_cpl_array <- replicate(Replications,cpl_foo(g_NE_r(test_fw)))
-empirical_p <- sum(random_fw_cpl_array >= test_fw_cpl) / Replications
+```{r table_1}
+webs_df %>%
+  select(name, complexity, obs_ge_random) %>%
+  knitr::kable(digits= c(3,3),
+               caption = "Table 1",
+               format.args = list(digits = 4, nsmall = 4))
 ```
+
+
+```{r figure_1}
+complexities_df <- webs_df%>%
+  unnest(random_complexities) %>%
+  select(-obs_ge_random) %>%
+  gather(key = "type",value = "complexity", -name) %>%
+  distinct(name, type, complexity, .keep_all = TRUE)
+
+
+ggplot() +
+  geom_density(aes(x = complexity), data = complexities_df %>% filter(type == "random_complexities")) +
+  geom_vline(aes(xintercept = complexity, color = "red"), data = complexities_df %>% filter(type == "complexity")) +
+  facet_wrap(~ name ) + #, scales = "free") +
+  labs(col = "") +
+  scale_color_manual(labels = "= observed", values = "red") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+To say something about the complexity of the observed foodwebs, we would need to reveal the nature of the complexity metric we used --- whether higher values correspond to higher or lower complexity --- and the null model.
+
+##### Randomization algorithms
+
+##### Complexity metric
 
 #### Results
 
 Are empiracally observed food webs significantly more complex, from an information theoretic point of view, than their random counter part?
-
-In this case, the `r empirical_p*100`% of the randomized webs have a higher complexity (as measured by `cpl_foo`) than the observed one. Thus, we say that the observed web `r ifelse(empirical_p < 0.05, "is", "is not")` significantly complex, with respect to the randomization algorithm and the complexity measure we adopted. We can also have a look at the distribution of the complexity measure we computed over the randomized webs we simulated.
-
-```{r}
-ggplot(data.frame(complexity = random_fw_cpl_array),
-       aes(complexity)) +
-  geom_density() +
-  geom_vline(xintercept = test_fw_cpl, colour = "red") +
-  theme_minimal()
-```
 
 Is any of the common proxies (such as connectance, the number of species, ...) correlated with the information complexity of the webs?
 
