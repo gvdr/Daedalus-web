@@ -1,3 +1,5 @@
+library(QuACN)
+
 ##function to convert a graphNEL object to an igraph
 ##g: The graphNEL object to be converted
 ##keep.weights: a flag to indicate whether weights should be considered when performing the conversion (DEFAULT= FALSE)
@@ -53,14 +55,71 @@ infoTheoreticGCM_entropy <- function(x) {
   infoTheoreticGCM(x)$entropy 
 }
 
-compl_list <- list(wiener,balabanJ,
-                   harary,randic,graphVertexComplexity,
-                   balabanlike2,balabanlike1,vertexDegree,
-                   radialCentric,bonchev2,bonchev1,
-                   bertz,complexityIndexB,normalizedEdgeComplexity,
-                   zagreb2,zagreb1,totalAdjacency,
-                   hyperDistancePathIndex,productOfRowSums,compactness,
-                   meanDistanceDeviation,topologicalInfoContent_entropy,infoTheoreticGCM_entropy)
+#' STS J. Kim and T. Wilhelm. What is a complex graph? P
+STS <- function(x) {
+  library(QuACN)
+  spanningTreeSensitivity(x)$STS 
+}
+
+#' STSD J. Kim and T. Wilhelm. What is a complex graph? P
+STSD <- function(x) {
+  library(QuACN)
+  spanningTreeSensitivity(x)$STSD 
+}
+
+#' one-edge-deleted  subgraph  complexity  with  respect  to  the  different
+#' number of spanning trees J. Kim and T. Wilhelm. What is a complex graph? P
+C_1eST <- function(x) {
+  library(QuACN)
+  oneEdgeDeletedSubgraphComplexity(x)$C_1eST 
+}
+
+#' one-edge-deleted  subgraph  complexity  with  respect  to  the  different
+#' number of spanning trees J. Kim and T. Wilhelm. What is a complex graph? P
+C_1eSpec <- function(x) {
+  library(QuACN)
+  oneEdgeDeletedSubgraphComplexity(x)$C_1eSpec 
+}
+
+#' computes the infoTheoreticGCM and return the entropy valu
+#' we use it to sample at random a complexity function
+infoTheoreticGCM_entropy <- function(x) {
+  library(QuACN)
+  infoTheoreticGCM(x)$entropy 
+}
+
+compl_list <- list(balabanJ,
+                   balabanlike1,
+                   balabanlike2,
+                   bertz,
+                   bonchev1,
+                   bonchev2,
+                   C_1eSpec,
+                   C_1eST,
+                   compactness,
+                   complexityIndexB,
+                   efficiency,
+                   graphIndexComplexity,
+                   graphVertexComplexity,
+                   harary,
+                   hyperDistancePathIndex,
+                   infoTheoreticGCM_entropy,
+                   meanDistanceDeviation,
+                   mediumArticulation,
+                   normalizedEdgeComplexity,
+                   offdiagonal,
+                   productOfRowSums,
+                   radialCentric,
+                   randic,
+                   STS,
+                   STSD,
+                   topologicalInfoContent_entropy,
+                   totalAdjacency,
+                   variableZagreb,
+                   vertexDegree,
+                   zagreb1,
+                   zagreb2,
+                   wiener)
 
 #' returns at random a complexity function from the ones
 #' provided by QuACN

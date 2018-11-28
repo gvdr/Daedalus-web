@@ -182,6 +182,12 @@ To say something about the complexity of the observed foodwebs, we would need to
 
 ##### Randomization algorithms
 
+[ ] Preserving edges and nodes (connectivity)
+
+[ ] Preserving degree sequence (curved ball algo)
+
+[ ] Phylogenetic informed
+
 ##### Complexity metric
 
 #### Results
